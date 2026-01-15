@@ -1,0 +1,18 @@
+﻿@using ToDoList.Models
+@model Item
+
+@{
+    ViewData["Title"] = "Add Item";
+}
+
+<h2>Add New Item</h2>
+
+<form action="Add" method="post">
+    <div class="form-group">
+        <label> Text: </label>
+        <input class="form-control" name="Text"/> 
+    </div>
+    <button type="submit" class="btn btn-primary">Save </button>
+    <a href="/" class="btn btn-primary">Cancel</a>
+</form>
+

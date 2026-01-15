@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Enities/Enities.csproj" />
+  <Project Path="Infrastructor/Infrastructor.csproj" />
+  <Project Path="TestProject/TestProject.csproj" Id="a08f8272-d91b-42c4-9270-9b40db0e86a4" />
+  <Project Path="UseCases/UseCases.csproj" />
+  <Project Path="WebApplication1/ToDoList.csproj" />
+</Solution>
