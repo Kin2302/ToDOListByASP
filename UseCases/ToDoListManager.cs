@@ -44,6 +44,9 @@ namespace UseCases
             repository.Delete(id);
         }
 
+        public void UpdateItem(ToDoItem item) {
+            repository.Update(item);
+        }
 
 
     }

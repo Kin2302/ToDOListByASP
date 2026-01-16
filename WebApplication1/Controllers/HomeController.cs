@@ -19,10 +19,15 @@ namespace WebApplication1.Controllers
 
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
 
             var toDoItems = _listManager.getToDoItem();
+
+            if (string.IsNullOrEmpty(searchString) == false)
+            {
+                toDoItems = toDoItems.Where(ti => ti.Text.Contains(searchString, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
 
             return View(new TodoListViewModel()
             {
@@ -65,6 +70,38 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index");
 
         }
+        [HttpGet]
+        public IActionResult Update(string id)
+        {
+
+            var toDoItems = _listManager.getToDoItem();
+            if (string.IsNullOrEmpty(id) == false)
+            {
+                toDoItems = toDoItems.Where(ti => ti.Id == int.Parse(id));
+            }
+
+            return View(new ToDoItem()
+            {
+                Id = toDoItems.First().Id,
+                Text = toDoItems.Last().Text,
+                isCompleted = toDoItems.Last().isCompleted
+            });
+        }
+
+
+        [HttpPost]
+        public IActionResult Update(Item item)
+        {
+            _listManager.UpdateItem(new ToDoItem()
+            {
+                Id = item.Id,
+                Text = item.Text,
+                isCompleted = item.isCompleted
+            } );
+        
+            return RedirectToAction("Index");
+        }
+
 
         [HttpPost] 
         public IActionResult MarkComplete(int id)
