@@ -74,18 +74,14 @@ namespace WebApplication1.Controllers
         public IActionResult Update(string id)
         {
 
-            var toDoItems = _listManager.getToDoItem();
-            if (string.IsNullOrEmpty(id) == false)
+            var item = _listManager.getToDoItem().FirstOrDefault(x => x.Id == int.Parse(id));
+
+            if (item == null)
             {
-                toDoItems = toDoItems.Where(ti => ti.Id == int.Parse(id));
+                return NotFound(); // Tr? v? l?i 404 n?u không tìm th?y ID
             }
 
-            return View(new ToDoItem()
-            {
-                Id = toDoItems.First().Id,
-                Text = toDoItems.Last().Text,
-                isCompleted = toDoItems.Last().isCompleted
-            });
+            return View(item);
         }
 
 

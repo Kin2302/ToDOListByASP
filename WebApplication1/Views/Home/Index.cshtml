@@ -38,8 +38,9 @@
                     <form action="/Home/Delete" method="post" style="display:inline;">
                         <input type="hidden" name="id" value="@item.Id" />
                         <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
-                        <a href="/Home/Update?id=@item.Id" class="btn btn-warning btn-sm">Sửa</a>
                     </form>
+                    <a href="/Home/Update?id=@item.Id" class="btn btn-warning btn-sm">Sửa</a>
+
                 </div>
             </li>
         }
